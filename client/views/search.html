@@ -1,0 +1,27 @@
+<div class="jumbotron text-left">
+	<h2>Search for your Favorite TV Show</h2>
+	<form>
+		<div class="form-group">
+			<input type="text" placeholder="Enter a show..." ng-model="name" uib-typeahead="words for words in searchKeyWords | filter:$viewValue" class="form-control">
+		</div>
+		<div class="form-group">
+			<div>
+				<button type="button" class="btn btn-warning" ng-click="getShow()">Search</button>
+			</div>
+		</div>
+
+		<div>
+		<input type="button" class="btn btn-success" value="Search History" ng-click="getShowHistory()"> </input>
+	</div>
+	<br>
+	<div ng-show="showHistory">
+		<h4>Search History Result</h4>
+		<div class="search-container" ng-repeat="words in searchKeyWords track by $index">
+			<a ng-click="getShow(words)" href="javascript:;">{{words}}</a>
+		</div>
+	</div>
+	</form>
+	<br>
+	<br>
+	<div ans></div>
+</div>

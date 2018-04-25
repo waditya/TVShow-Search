@@ -1,0 +1,60 @@
+
+<div ng-if = "shows">
+	<div class="container" style ="color:white">
+	
+		<div class="panel-heading">
+		<h2>{{shows.name}}</h2>
+		<div id="navigation">
+			<ul>
+				<h4><li ng-repeat="s in shows.genres"> {{s}}</li></h4>
+			</ul>
+		</div>
+			<div class="row">
+			<div class="col-sm-4">
+				<div ng-if = "shows.image.medium == null">
+				<img src="/image/def.jpg" height ="250" width ="250" >
+				</div>
+
+				<img src="{{shows.image.medium}}">
+			</div>
+				<div class="col-sm-8">
+				<h3>Summary</h3><hr><p align="justify" ng-bind-html='shows.summary | trustHTML'></p>
+				</div>
+			</div>
+			
+			<div class="row">
+			<div class="col-sm-4">
+			</div>
+			<div class="container">
+				<div class="col-sm-8">
+				
+				<div class="panel-heading">
+				
+					<h3>Cast</h3><hr>
+					<div ng-repeat="img in shows._embedded.cast">
+					<table class="table table-striped">
+					<tr><td> 
+						<div ng-if= "img.person.image.medium == null && img.character.image.medium == null">
+							<img src="/image/default.jpg">
+						</div>
+						<div ng-if= "img.person.image.medium == null && img.character.image.medium != null">
+							<img src={{img.character.image.medium}}>
+						</div>
+						<div ng-if= "img.person.image.medium != null">
+							<img src={{img.person.image.medium}}>
+						</div>
+						</td>
+						<td>
+						<h4>{{img.person.name}} </h4> as <b>{{img.character.name}}</b>
+						</td>
+						</tr>
+					</table></div>
+				</div>
+				</div>
+				</div>
+			</div>
+		</div>
+		</div>
+	</div>
+	
+	
